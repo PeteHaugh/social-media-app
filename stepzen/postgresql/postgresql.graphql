@@ -125,7 +125,7 @@ type Mutation {
       configuration: "postgresql_config"
     )
     
-  insertSubreddit(topic: String!): Subreddit
+insertSubreddit(topic: String!): Subreddit
     @dbquery(
       type: "postgresql"
       schema: "public"

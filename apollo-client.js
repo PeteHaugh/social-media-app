@@ -1,11 +1,14 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: "https://Puchheim.stepzen.net/api/lopsided-garfish/__graphql",
-    header: {
-        Authorisation: `Apikey ${process.env.NEXT_PUBLIC_STEPZEN_KEY}`,
+    uri: " http://localhost:5001/api/lopsided-garfish",
+    headers: {
+        Authorisation: `apikey ${process.env.NEXT_PUBLIC_STEPZEN_KEY}`,
+        "Content-Type": "application/json",
     },
+
     cache: new InMemoryCache(),
+    
 });
 
 export default client;
