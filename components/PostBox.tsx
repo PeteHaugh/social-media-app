@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Avatar from "./Avatar";
 import { LinkIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from "../graphql/mutations";
 
 type FormData = {
   postTitle: string;
@@ -14,7 +16,7 @@ type FormData = {
 function PostBox() {
   const { data: session } = useSession();
   const [imageBoxOpen, setImageBoxOpen] = useState(false);
-
+    const [addPost] = useMutation(ADD_POST)
   const {
     register,
     setValue,
@@ -23,12 +25,23 @@ function PostBox() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = () => {
+  const onSubmit = handleSubmit(async (formData) => {
+    console.log(formData)
 
-  }
-  
+    try {
+        
+
+        
+    } catch (
+        
+
+    ) {
+        
+    }
+  })
+
   return (
-    <form className="sticky top-16 z-50 bg-white border rounded-md p-2">
+    <form onSubmit={onSubmit} className="sticky top-16 z-50 bg-white border rounded-md p-2">
       <div className="flex items-center space-x-3">
         <Avatar />
         <input
