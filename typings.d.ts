@@ -10,7 +10,7 @@ type Vote = {
     created_at: string
     id: number
     post_id: number
-    upvote: string
+    upvote: boolean
     username: string
 }
 
