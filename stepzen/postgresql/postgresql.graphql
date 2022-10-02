@@ -16,19 +16,19 @@ type Post {
   username: String
   votes: [Vote]
     @materializer(
-      query: "getVotesByPostId",
+      query: "getVotesByPostId"
       arguments: [{ name: "post_id", field: "id" }]
     )
 
   comments: [Comment]
     @materializer(
-      query: "getCommentByPostId",
+      query: "getCommentByPostId"
       arguments: [{ name: "post_id", field: "id" }]
     )
 
   subreddit: [Subreddit]
     @materializer(
-      query: "getSubredditListById",
+      query: "getSubredditListById"
       arguments: [{ name: "id", field: "subreddit_id" }]
     )
 }
@@ -59,7 +59,7 @@ type Query {
   """
   Query based on subreddit id
   """
-  getCommentByPostId(post_id: ID!): [Comment] 
+  getCommentByPostId(post_id: ID!): [Comment]
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -72,7 +72,7 @@ type Query {
   """
   Query based on post id
   """
-  getVotesByPostId(post_id: ID!): [Vote] 
+  getVotesByPostId(post_id: ID!): [Vote]
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -86,7 +86,7 @@ type Query {
   """
   Query based on subreddit id
   """
-  getSubredditListById(id: ID!): [Subreddit] 
+  getSubredditListById(id: ID!): [Subreddit]
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -141,7 +141,7 @@ type Query {
       configuration: "postgresql_config"
     )
 
-  getPostListByPostId(post_id: ID!) : Post
+  getPostListByPostId(post_id: ID!): Post
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -151,6 +151,7 @@ type Query {
       """
       configuration: "postgresql_config"
     )
+
   getPostListByTopic(topic: String!): [Post]
     @dbquery(
       type: "postgresql"
@@ -208,8 +209,8 @@ type Mutation {
       dml: INSERT
       configuration: "postgresql_config"
     )
-    
-insertSubreddit(topic: String!): Subreddit
+
+  insertSubreddit(topic: String!): Subreddit
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -218,6 +219,14 @@ insertSubreddit(topic: String!): Subreddit
       configuration: "postgresql_config"
     )
 
+  insertComment(post_id: ID!, username: String!, text: String!): Comment
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comment"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
 
   """
   In this mutation example you can see how to do a mutation to delete data from the database.

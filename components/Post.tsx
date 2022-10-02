@@ -2,9 +2,7 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   BookmarkIcon,
-  ChatBubbleBottomCenterIcon,
   ChatBubbleLeftIcon,
-  ChatBubbleOvalLeftIcon,
   EllipsisHorizontalCircleIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
@@ -12,12 +10,20 @@ import React from "react";
 import Avatar from "./Avatar";
 import TimeAgo from "react-timeago";
 import Link from "next/link";
+import { Jelly } from "@uiball/loaders";
 
 type Props = {
   post: Post;
 };
 
 function Post({ post }: Props) {
+
+  if(!post) return (
+    <div className="flex w-full items-center justify-center text-lg">
+      <Jelly size={50} color="#FF4501" />
+    </div>
+  )
+
   return (
     <Link href={`/post/${post.id}`}>
       <div className="flex cursor-pointer rounded-md border border-gray-300 bg-white shadow-sm hover:border hover:border-gray-400">
