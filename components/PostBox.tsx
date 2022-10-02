@@ -16,7 +16,11 @@ type FormData = {
   subreddit: string;
 };
 
-function PostBox() {
+type Props = {
+  subreddit?: string
+}
+
+function PostBox({ subreddit }: Props) {
   const { data: session } = useSession();
   const [imageBoxOpen, setImageBoxOpen] = useState(false);
   const [addPost] = useMutation(ADD_POST, {
@@ -38,19 +42,18 @@ function PostBox() {
   const onSubmit = handleSubmit(async (formData) => {
 
     const notification = toast.loading("Creating new post...");
-
-    try {
-        
+    try { 
+      console.log(subreddit)
       const {
         data: { getSubredditListByTopic },
       } = await client.query({
         query: GET_SUBREDDIT_BY_TOPIC,
         variables: {
-          topic: formData.subreddit,
+          topic: subreddit || formData.subreddit,
         },
       });
-
-      console.log('trying... again')
+      console.log(getSubredditListByTopic)
+      console.log(subreddit)
       const subredditExists = getSubredditListByTopic.length > 0;
 
       if (!subredditExists) {
@@ -129,7 +132,7 @@ function PostBox() {
           className="flex-1 rounded-md bg-gray-50 p-2 pl-5 outline-none"
           type="text"
           placeholder={
-            session ? "Create a post by entering a title" : "Sign in to post"
+            session ? subreddit ? `Create a post in r/${subreddit}`: "Create a post by entering a title" : "Sign in to post"
           }
         />
         <PhotoIcon
@@ -154,16 +157,19 @@ function PostBox() {
             />
           </div>
 
-          <div className="flex items-center px-2">
-            <p className="min-w-[90px]">Subreddit:</p>
+          {!subreddit && (
+            <div className="flex items-center px-2">
+              <p className="min-w-[90px]">Subreddit:</p>
 
-            <input
-              className="m-2 flex-1 bg-blue-50 p-2 outline-none"
-              {...register("subreddit", { required: true })}
-              type="text"
-              placeholder="Text (optional)"
-            />
-          </div>
+              <input
+                className="m-2 flex-1 bg-blue-50 p-2 outline-none"
+                {...register("subreddit", { required: true })}
+                type="text"
+                placeholder="Text (optional)"
+              />
+            </div>
+          )}
+          
 
           {imageBoxOpen && (
             <div className="flex items-center px-2">

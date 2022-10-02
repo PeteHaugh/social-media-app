@@ -4,7 +4,7 @@ import Image from "next/image";
 
 type Props = {
     seed?: string
-    large?: string
+    large?: boolean
 }
 
 function Avatar({seed, large}: Props) {
