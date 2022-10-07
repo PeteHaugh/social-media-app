@@ -5,6 +5,7 @@ const client = new ApolloClient({
     headers: {
         Authorisation: `apikey ${process.env.NEXT_PUBLIC_STEPZEN_KEY}`,
         "Content-Type": "application/json",
+        credentials: 'include'
     },
 
     cache: new InMemoryCache(),
