@@ -5,7 +5,7 @@ const client = new ApolloClient({
     headers: {
         Authorisation: `apikey ${process.env.NEXT_PUBLIC_STEPZEN_KEY}`,
         "Content-Type": "application/json",
-        mode: 'no-cors'
+        "Access-Control-Allow-Origin": "*"
     },
 
     cache: new InMemoryCache(),
