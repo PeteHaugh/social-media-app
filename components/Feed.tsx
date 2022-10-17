@@ -20,7 +20,7 @@ function Feed({ topic }: Props) {
 
 
   return (
-    <div className="mt-5 space-y-4">
+    <div className="mt-5 space-y-4 flex-1">
       {posts?.map((post) => (
         <Post key={post.id} post={post} />
       ))}

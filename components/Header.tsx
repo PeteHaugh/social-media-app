@@ -4,31 +4,27 @@ import {
   BellIcon,
   ChatBubbleLeftIcon,
   ChevronDownIcon,
-  GlobeAltIcon,
   HomeIcon,
   MagnifyingGlassIcon,
   PlusIcon,
-  SparklesIcon,
-  SpeakerWaveIcon,
-  VideoCameraIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/outline";
 import { Bars3BottomRightIcon } from "@heroicons/react/24/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Link from 'next/link';
+import Link from "next/link";
+import Avatar from "./Avatar";
 
 function Header() {
   const { data: session } = useSession();
 
   return (
-    <div className="sticky top-0 z-50 flex items-center bg-white px-4 py-2 shadow-sm">
+    <div className="sticky top-0 z-50 flex items-center bg-white px-2 py-1 shadow-sm">
       <div className="relative h-10 w-20 flex-shrink-0 cursor-pointer">
         <Link href="/">
-          <div>Image</div>
-        {/* <Image
-          objectFit="contain"
-          src="https://links.papareact.com/fqy"
-          layout="fill"
-        /> */}
+          <Image
+            objectFit="contain"
+            src="https://i.ibb.co/7Sc6ZwJ/Reddit-Logo.png"
+            layout="fill"
+          />
         </Link>
       </div>
 
@@ -39,7 +35,7 @@ function Header() {
       </div>
 
       {/* Search Box */}
-      <form className="flex flex-1 items-center space-x-2 border-gray-200 rounded-sm bg-gray-100 px-3 py-1">
+      <form className="flex flex-1 items-center space-x-2 border-gray-200 rounded-full bg-gray-100 px-3 py-1">
         <MagnifyingGlassIcon className="h-6 w-6 text-gray-400" />
         <input
           className="flex-1 bg-transparent outline-none"
@@ -50,31 +46,25 @@ function Header() {
       </form>
 
       <div className="mx-5 hidden items-center space-x-2 text-gray-500 lg:inline-flex">
-        <SparklesIcon className="icon" />
-        <GlobeAltIcon className="icon" />
-        <VideoCameraIcon className="icon" />
+        
         <hr className="h-10 border-gray-100" />
         <ChatBubbleLeftIcon className="icon" />
         <BellIcon className="icon" />
         <PlusIcon className="icon" />
-        <SpeakerWaveIcon className="icon" />
+        <div className="bg-gray-200 rounded-full py-1 px-4 text-black">Advertise</div>
       </div>
 
       <div className="mx-5 flex items-center lg:hidden">
         <Bars3BottomRightIcon className="icon" />
       </div>
 
-      {session ? (
+      {true ? (
         <div
           onClick={() => signOut()}
           className="hidden items-center lg:flex space-x-2 border border-gray-100 p-2 cursor-pointer"
         >
           <div className="relative h-5 w-5 flex-shrink-0">
-            <Image
-              objectFit="contain"
-              layout="fill"
-              src="https://links.papareact.com/23l"
-              alt=""
+            <Avatar seed={session?.user?.name} tiny
             />
           </div>
           <div className="flex-1 text-xs">
