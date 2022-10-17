@@ -66,7 +66,7 @@ function PostPage() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col space-y-2"
+          className="flex flex-col space-y-2 mb-2"
         >
           <textarea
             {...register("comment")}

@@ -86,7 +86,7 @@ function Post({ post }: Props) {
 
   if (!post)
     return (
-      <div className="flex w-full items-center justify-center text-lg">
+      <div className="flex w-full h-32 items-center justify-center text-lg">
         <Jelly size={50} color="#FF4501" />
       </div>
     );

@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   return (
     <div className="my-7 mx-auto max-w-5xl">
       <Head>
-        <title>Social Media</title>
+        <title>Reddit Clone</title>
       </Head>
 
       <PostBox />
