@@ -39,7 +39,7 @@ function Header() {
       </div>
 
       {/* Search Box */}
-      <form className="flex flex-1 items-center space-x-2 border-gray-200 rounded-full bg-gray-100 px-3 py-1">
+      <form className="flex flex-1 items-center space-x-2 border-gray-200 rounded-full bg-gray-100 px-3 py-2">
         <MagnifyingGlassIcon className="h-6 w-6 text-gray-400" />
         <input
           className="flex-1 bg-transparent outline-none"
