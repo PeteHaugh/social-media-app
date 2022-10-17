@@ -8,7 +8,11 @@ import {
   MagnifyingGlassIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
-import { Bars3BottomRightIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3BottomRightIcon,
+  MegaphoneIcon,
+} from "@heroicons/react/24/outline";
+
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Avatar from "./Avatar";
@@ -46,26 +50,27 @@ function Header() {
       </form>
 
       <div className="mx-5 hidden items-center space-x-2 text-gray-500 lg:inline-flex">
-        
         <hr className="h-10 border-gray-100" />
         <ChatBubbleLeftIcon className="icon" />
         <BellIcon className="icon" />
         <PlusIcon className="icon" />
-        <div className="bg-gray-200 rounded-full py-1 px-4 text-black">Advertise</div>
+        <div className="flex flex-row items-center bg-gray-200 rounded-full py-1 px-4 text-gray-700 hover:bg-gray-300">
+          <MegaphoneIcon className="h-6 w-6 pr-1"/>
+          Advertise
+        </div>
       </div>
 
       <div className="mx-5 flex items-center lg:hidden">
         <Bars3BottomRightIcon className="icon" />
       </div>
 
-      {true ? (
+      {session ? (
         <div
           onClick={() => signOut()}
           className="hidden items-center lg:flex space-x-2 border border-gray-100 p-2 cursor-pointer"
         >
           <div className="relative h-5 w-5 flex-shrink-0">
-            <Avatar seed={session?.user?.name} tiny
-            />
+            <Avatar seed={session?.user?.name} tiny />
           </div>
           <div className="flex-1 text-xs">
             <p>{session?.user?.name}</p>
