@@ -55,7 +55,7 @@ function Header() {
         <BellIcon className="icon" />
         <PlusIcon className="icon" />
         <div className="flex flex-row items-center bg-gray-200 rounded-full py-1 px-4 text-gray-700 hover:bg-gray-300">
-          <MegaphoneIcon className="h-6 w-6 pr-1"/>
+          <MegaphoneIcon className="h-6 w-6 pr-1" />
           Advertise
         </div>
       </div>
@@ -87,7 +87,7 @@ function Header() {
             <Image
               objectFit="contain"
               layout="fill"
-              src="https://links.papareact.com/23l"
+              src="https://i.ibb.co/JqFhgVv/reddit-icon.png"
               alt=""
             />
           </div>

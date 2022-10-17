@@ -125,7 +125,7 @@ function PostBox({ subreddit }: Props) {
       className="sticky top-16 z-50 bg-white border rounded-md p-2"
     >
       <div className="flex items-center space-x-3">
-        <Avatar />
+        <Avatar seed={session?.user?.name} />
         <input
           {...register("postTitle", { required: true })}
           disabled={!session}

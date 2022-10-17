@@ -1,9 +1,7 @@
 import { useQuery } from "@apollo/client";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Feed from "../components/Feed";
-import Header from "../components/Header";
 import PostBox from "../components/PostBox";
 import SubredditRow from "../components/SubredditRow";
 import { GET_SUBREDDITS_WITH_LIMIT } from "../graphql/queries";
