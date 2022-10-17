@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 
 type Props = {
-    seed?: string
+    seed?: string | null | undefined
     large?: boolean
     tiny?: boolean
 }
